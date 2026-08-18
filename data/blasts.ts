@@ -98,9 +98,11 @@ export const blasts: Blast[] = [
     glow: "oklch(0.75 0.19 80 / 0.5)",
     frames: ["ssc"],
     department: "Supreme Student Council",
+    campus: "Batangas State University – TNEU Balayan Campus",
+    event: "ElevatEd 3.0: Freshmen Orientation & Old Student Reorientation",
     programs: [...cicsPrograms, ...cetPrograms],
-    body: "Hello, I am {name}, a {year} {program} student proudly serving the student body through the {department}. Ready to be elevated, to lead, and to make this school year unforgettable. Let's go, SSC!",
-    hashtags: ["#SSC", "#SupremeStudentCouncil", "#BSUBalayan", "#Elevated"],
+    body: "Hello, I am {name}, a {year} {program} student of the {department} at {campus}.\n\nTo be elevated is to rise beyond the ordinary—to learn, grow, discover, and transform. Through {event}, we are invited to broaden our perspectives, strengthen our aspirations, deepen our knowledge, and find purpose as we begin a new chapter of our academic journey. \n\nMay this encourage us to embrace growth, pursue excellence, and elevate our potential, carrying the values and experiences as we move forward with purpose.\n\n𝗚𝗲𝘁 𝗶𝗻𝗳𝗼𝗿𝗺𝗲𝗱. 𝗚𝗲𝘁 𝗰𝗼𝗻𝗻𝗲𝗰𝘁𝗲𝗱. 𝗚𝗲𝘁 𝗘𝗟𝗘𝗩𝗔𝗧𝗘𝗗.",
+    hashtags: ["#Elevated3.0", "#SSCBalayan", "#BatStateUBalayan"],
   },
   {
     id: "cics",
