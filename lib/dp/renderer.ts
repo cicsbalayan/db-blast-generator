@@ -12,8 +12,7 @@ const loaders: Record<FrameId, () => Promise<FrameDrawer>> = {
   cet: () => import("@/lib/dp/frames/cet").then((mod) => mod.cet),
   neon: () => import("@/lib/dp/frames/neon").then((mod) => mod.neon),
   orbit: () => import("@/lib/dp/frames/orbit").then((mod) => mod.orbit),
-  halo: () => import("@/lib/dp/frames/halo").then((mod) => mod.halo),
-  shield: () => import("@/lib/dp/frames/shield").then((mod) => mod.shield),
+  ssc: () => import("@/lib/dp/frames/ssc").then((mod) => mod.ssc),
   hex: () => import("@/lib/dp/frames/hex").then((mod) => mod.hex),
   seal: () => import("@/lib/dp/frames/seal").then((mod) => mod.seal),
 }
