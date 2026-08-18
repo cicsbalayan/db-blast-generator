@@ -21,18 +21,43 @@ function escapeHtml(value: string): string {
     .replaceAll("'", "&#39;")
 }
 
+const BOLD_UPPER_A = 0x1d5d4
+const BOLD_LOWER_A = 0x1d5ee
+const BOLD_DIGIT_0 = 0x1d7ec
+
+function toUnicodeBold(value: string): string {
+  return [...value]
+    .map((ch) => {
+      const code = ch.charCodeAt(0)
+      if (code >= 0x41 && code <= 0x5a)
+        return String.fromCodePoint(BOLD_UPPER_A + (code - 0x41))
+      if (code >= 0x61 && code <= 0x7a)
+        return String.fromCodePoint(BOLD_LOWER_A + (code - 0x61))
+      if (code >= 0x30 && code <= 0x39)
+        return String.fromCodePoint(BOLD_DIGIT_0 + (code - 0x30))
+      return ch
+    })
+    .join("")
+}
+
 function strong(value: string): string {
   return `<strong>${escapeHtml(value)}</strong>`
+}
+
+function strongText(value: string): string {
+  return toUnicodeBold(value)
 }
 
 function applySubstitutions(
   template: string,
   substitutions: ReadonlyArray<readonly [string, string]>,
-  bold: boolean
+  bold: boolean | "text"
 ): string {
   let out = template
   for (const [key, value] of substitutions) {
-    out = out.replaceAll(key, bold ? strong(value) : value)
+    const replacement =
+      bold === true ? strong(value) : bold === "text" ? strongText(value) : value
+    out = out.replaceAll(key, replacement)
   }
   return out
 }
@@ -64,13 +89,14 @@ export function buildCaption(
 
   const template = yearly?.body ?? source.body
   const body = applySubstitutions(template, substitutions, false)
+  const bodyText = applySubstitutions(template, substitutions, "text")
   const bodyHtml = applySubstitutions(template, substitutions, true).replaceAll(
     "\n",
     "<br>"
   )
 
   const hashtags = yearly?.hashtags ?? [...source.hashtags, `#${program.abbr}`]
-  const text = `${title}\n\n${body}\n\n${hashtags.join(" ")}`
+  const text = `${toUnicodeBold(title)}\n\n${bodyText}\n\n${hashtags.join(" ")}`
   const html = `${strong(title)}<br><br>${bodyHtml}<br><br>${escapeHtml(hashtags.join(" "))}`
 
   return {
