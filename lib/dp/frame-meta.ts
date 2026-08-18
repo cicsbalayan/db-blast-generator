@@ -6,8 +6,7 @@ export const frameNames: Record<FrameId, string> = {
   cet: "CET Frame",
   neon: "Neon Frame",
   orbit: "Orbit Circle",
-  halo: "Halo Frame",
-  shield: "Shield Crest",
+  ssc: "SSC Frame",
   hex: "Hex Cutout",
   seal: "Engineer Seal",
 }
@@ -20,6 +19,8 @@ export function frameImageSrc(frameId: FrameId): string | null {
       return "/CICS-Frame-2.png"
     case "cet":
       return "/CET-Frame.png"
+    case "ssc":
+      return "/SSC-Frame.png"
     default:
       return null
   }

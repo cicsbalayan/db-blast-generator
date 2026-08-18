@@ -87,7 +87,7 @@ export const blasts: Blast[] = [
     id: "ssc",
     label: "SSC",
     name: "Supreme Student Council",
-    title: "Big Elevation Energy",
+    title: "Its time to be ElevatEd",
     description:
       "The Supreme Student Council welcomes you to a new academic year — shine on your socials with the official SSC display picture.",
     gradient: [
@@ -96,7 +96,7 @@ export const blasts: Blast[] = [
       "oklch(0.62 0.17 60)",
     ],
     glow: "oklch(0.75 0.19 80 / 0.5)",
-    frames: ["halo", "shield"],
+    frames: ["ssc"],
     department: "Supreme Student Council",
     programs: [...cicsPrograms, ...cetPrograms],
     body: "Hello, I am {name}, a {year} {program} student proudly serving the student body through the {department}. Ready to be elevated, to lead, and to make this school year unforgettable. Let's go, SSC!",

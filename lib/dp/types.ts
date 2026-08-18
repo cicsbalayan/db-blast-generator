@@ -4,8 +4,7 @@ export type FrameId =
   | "cet"
   | "neon"
   | "orbit"
-  | "halo"
-  | "shield"
+  | "ssc"
   | "hex"
   | "seal"
 
