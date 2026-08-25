@@ -23,7 +23,7 @@ export const cetPrograms: Program[] = [
   { name: "Bachelor of Automotive Engineering Technology", abbr: "BAET" },
   {
     name: "Bachelor of Instrumentation and Control Engineering Technology",
-    abbr: "BIECT",
+    abbr: "BICET",
   },
   { name: "Bachelor of Mechanical Engineering Technology", abbr: "BMET" },
   { name: "Bachelor of Architectural Engineering Technology", abbr: "BARET" },
@@ -68,6 +68,7 @@ export const cetProgramsByYear: Readonly<Record<Year, readonly Program[]>> = {
     { name: "Bachelor of Mechanical Engineering Technology", abbr: "BMET" },
     { name: "Bachelor of Drafting Engineering Technology", abbr: "BDET" },
     { name: "Bachelor of Computer Engineering Technology", abbr: "BCPET" },
+    { name: "Bachelor of Civil Engineering Technology", abbr: "BCVET" },
     { name: "Bachelor of Electrical Engineering Technology", abbr: "BEET" },
     { name: "Bachelor of Electronics Engineering Technology", abbr: "BECET" },
   ],
