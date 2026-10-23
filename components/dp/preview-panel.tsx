@@ -57,10 +57,10 @@ export function PreviewPanel({
         </span>
       </CardHeader>
       <CardContent>
-        <div className="relative mx-auto aspect-square w-full max-w-md overflow-hidden rounded-2xl bg-foreground ring-1 shadow-neo ring-foreground/15">
+        <div className="relative mx-auto aspect-square w-full max-w-md overflow-hidden rounded-2xl bg-background shadow-neo ring-1 ring-border/70">
           <div
             aria-hidden
-            className="pointer-events-none absolute inset-0 bg-linear-to-b from-[#fff7ed]/10 via-transparent to-[#1a1008]/40"
+            className="pointer-events-none absolute inset-0 bg-linear-to-b from-primary/10 via-transparent to-background/70"
           />
           <canvas
             ref={previewRef}

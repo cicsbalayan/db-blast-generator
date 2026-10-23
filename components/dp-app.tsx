@@ -57,7 +57,7 @@ export function DpApp({
             </p>
 
             {blasts.length > 1 && (
-              <div className="mx-auto mt-9 inline-flex w-full max-w-sm items-center gap-1 rounded-full border border-border/60 bg-card surface-inset p-1 shadow-neo-inset">
+              <div className="surface-inset mx-auto mt-9 inline-flex w-full max-w-sm items-center gap-1 rounded-full border border-border/70 bg-card p-1 shadow-neo-inset">
                 {blasts.map((blast) => {
                   const isActive = blast.id === activeId
                   return (
