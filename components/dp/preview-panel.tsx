@@ -48,7 +48,7 @@ export function PreviewPanel({
             Drag to reposition · pinch or use the controls to zoom
           </CardDescription>
         </div>
-        <span className="mt-0.5 inline-flex shrink-0 items-center gap-1.5 rounded-full border border-border/70 bg-card px-2.5 py-1 text-[10px] font-semibold tracking-wide text-secondary-foreground uppercase shadow-neo-pill">
+        <span className="mt-0.5 inline-flex shrink-0 items-center gap-1.5 rounded-full border border-border/60 bg-card surface-raised px-2.5 py-1 text-[10px] font-semibold tracking-wide text-secondary-foreground uppercase shadow-neo-pill">
           <span
             aria-hidden
             className="size-1.5 rounded-full bg-accent shadow-[0_0_0_4px_color-mix(in_srgb,var(--accent)_14%,transparent)]"
@@ -85,7 +85,7 @@ export function PreviewPanel({
           >
             <RiRefreshLine />
           </Button>
-          <div className="flex items-center gap-1 rounded-full border border-border/70 bg-card p-1 shadow-neo-inset">
+          <div className="flex items-center gap-1 rounded-full border border-border/60 bg-card surface-inset p-1 shadow-neo-inset">
             <Button
               variant="ghost"
               size="icon-sm"

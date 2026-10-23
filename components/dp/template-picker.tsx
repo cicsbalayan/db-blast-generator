@@ -58,14 +58,14 @@ function TemplateThumb({
       aria-pressed={selected}
       onClick={() => onSelect(frame.id)}
       className={cn(
-        "group/tpl flex flex-col gap-2 rounded-xl border border-border/70 bg-card p-1.5 text-left transition-all outline-none hover:-translate-y-px hover:shadow-neo focus-visible:ring-3 focus-visible:ring-ring/25",
+        "group/tpl flex flex-col gap-2 rounded-2xl border border-border/60 bg-card surface-raised p-2 text-left transition-transform duration-200 ease-out outline-none hover:-translate-y-0.5 focus-visible:ring-3 focus-visible:ring-ring/25",
         selected && "border-accent/70 ring-2 shadow-neo ring-accent/10"
       )}
     >
-      <span className="relative block overflow-hidden rounded-lg bg-foreground ring-1 shadow-neo-inset ring-border/70">
+      <span className="relative block overflow-hidden rounded-xl bg-foreground ring-1 shadow-neo-inset ring-border/60">
         <canvas ref={ref} className="aspect-square w-full" />
         {selected && (
-          <span className="absolute top-2 right-2 flex size-5 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-neo-pill">
+          <span className="absolute top-2 right-2 flex size-5 items-center justify-center rounded-full bg-primary surface-primary text-primary-foreground shadow-primary-pill">
             <RiCheckLine className="size-3" />
           </span>
         )}

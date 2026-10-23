@@ -13,11 +13,11 @@ const DpGenerator = dynamic(
     loading: () => (
       <div className="mx-auto grid max-w-6xl animate-pulse gap-5 px-4 pb-20 sm:px-6 lg:grid-cols-2">
         <div className="flex flex-col gap-5">
-          <div className="h-56 rounded-2xl border border-border/60 bg-card shadow-neo" />
-          <div className="h-40 rounded-2xl border border-border/60 bg-card shadow-neo" />
-          <div className="h-80 rounded-2xl border border-border/60 bg-card shadow-neo" />
+          <div className="h-56 rounded-2xl border border-border/60 bg-card surface-raised shadow-neo" />
+          <div className="h-40 rounded-2xl border border-border/60 bg-card surface-raised shadow-neo" />
+          <div className="h-80 rounded-2xl border border-border/60 bg-card surface-raised shadow-neo" />
         </div>
-        <div className="h-[30rem] rounded-2xl border border-border/60 bg-card shadow-neo" />
+        <div className="h-[30rem] rounded-2xl border border-border/60 bg-card surface-raised shadow-neo" />
       </div>
     ),
   }
@@ -34,13 +34,6 @@ export function DpApp({
 
   return (
     <div className="relative">
-      <div
-        aria-hidden
-        className="pointer-events-none fixed inset-0 -z-10 overflow-hidden"
-      >
-        <div className="absolute -top-72 left-1/2 h-[40rem] w-[60rem] -translate-x-1/2 rounded-full bg-white/50 blur-3xl" />
-      </div>
-
       <section className="relative border-b border-border/60">
         <div className="mx-auto max-w-6xl px-4 pt-14 pb-10 sm:px-6 sm:pt-20 sm:pb-12">
           <div className="mx-auto max-w-3xl text-center">
@@ -64,7 +57,7 @@ export function DpApp({
             </p>
 
             {blasts.length > 1 && (
-              <div className="mx-auto mt-9 inline-flex w-full max-w-sm items-center gap-1 rounded-full border border-border/70 bg-card p-1 shadow-neo">
+              <div className="mx-auto mt-9 inline-flex w-full max-w-sm items-center gap-1 rounded-full border border-border/60 bg-card surface-inset p-1 shadow-neo-inset">
                 {blasts.map((blast) => {
                   const isActive = blast.id === activeId
                   return (
@@ -74,9 +67,9 @@ export function DpApp({
                       aria-pressed={isActive}
                       onClick={() => onActiveChange(blast.id)}
                       className={cn(
-                        "flex-1 rounded-full px-4 py-2 text-sm font-medium transition-all outline-none focus-visible:ring-3 focus-visible:ring-ring/25",
+                        "flex-1 rounded-full px-4 py-2 text-sm font-medium transition-[transform,background-color,border-color,color] duration-200 outline-none focus-visible:ring-3 focus-visible:ring-ring/25",
                         isActive
-                          ? "bg-primary text-primary-foreground shadow-neo-pill"
+                          ? "bg-primary surface-primary text-primary-foreground shadow-primary-pill"
                           : "text-muted-foreground hover:text-foreground"
                       )}
                     >
@@ -88,15 +81,15 @@ export function DpApp({
             )}
 
             <div className="mt-9 flex flex-wrap items-center justify-center gap-x-6 gap-y-2.5 text-xs text-muted-foreground">
-              <span className="inline-flex items-center gap-1.5 rounded-full border border-border/70 bg-card px-2.5 py-1 shadow-neo-pill">
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-border/60 bg-card surface-raised px-2.5 py-1 shadow-neo-pill">
                 <RiCheckboxCircleLine className="size-3.5 text-accent-strong" />
                 Official {active.label} frame
               </span>
-              <span className="inline-flex items-center gap-1.5 rounded-full border border-border/70 bg-card px-2.5 py-1 shadow-neo-pill">
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-border/60 bg-card surface-raised px-2.5 py-1 shadow-neo-pill">
                 <RiImageLine className="size-3.5 text-accent-strong" />
                 2048 × 2048 PNG
               </span>
-              <span className="inline-flex items-center gap-1.5 rounded-full border border-border/70 bg-card px-2.5 py-1 shadow-neo-pill">
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-border/60 bg-card surface-raised px-2.5 py-1 shadow-neo-pill">
                 <RiLockLine className="size-3.5 text-accent-strong" />
                 Stays on your device
               </span>
