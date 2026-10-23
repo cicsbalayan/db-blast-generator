@@ -6,8 +6,8 @@ export const site = {
       "Put your photo inside a stylish frame and download your new display picture.",
   },
   brand: {
-    name: "DP Blast Generator",
-    tagline: "ElevatED 3.0 · BatStateU Balayan",
+    name: "SSC X OGC",
+    tagline: "AllianCICS - Balayan Innovation Hub",
   },
   footer: {
     rights: "All rights reserved.",
