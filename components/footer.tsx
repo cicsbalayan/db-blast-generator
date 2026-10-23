@@ -4,9 +4,9 @@ import { site } from "@/data/site"
 
 export function Footer() {
   return (
-    <footer className="border-t border-border/70">
+    <footer className="border-t border-border/60">
       <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-4 py-8 text-center sm:flex-row sm:px-6 sm:text-left">
-        <div className="flex items-center gap-2.5">
+        <div className="flex items-center gap-2.5 rounded-full border border-border/70 bg-card px-3 py-1.5 shadow-neo-pill">
           <span aria-hidden className="size-1.5 rounded-full bg-accent" />
           <p className="text-xs text-muted-foreground">
             <span className="font-medium text-foreground">

@@ -61,8 +61,8 @@ export function PhotoUploader({
             onFile(event.dataTransfer.files?.[0])
           }}
           className={cn(
-            "flex cursor-pointer flex-col items-center justify-center gap-2.5 rounded-xl border border-dashed border-border bg-background/40 px-6 py-7 text-center transition-colors outline-none hover:border-accent/45 hover:bg-secondary/25 focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/25",
-            dragging && "border-accent/70 bg-secondary/40"
+            "flex cursor-pointer flex-col items-center justify-center gap-2.5 rounded-xl border border-border/70 bg-card px-6 py-7 text-center shadow-neo-sm transition-all outline-none hover:-translate-y-px hover:shadow-neo focus-visible:ring-3 focus-visible:ring-ring/25",
+            dragging && "ring-2 shadow-neo ring-accent/15"
           )}
         >
           {photoUrl ? (
@@ -71,7 +71,7 @@ export function PhotoUploader({
               <img
                 src={photoUrl}
                 alt="Selected photo preview"
-                className="size-14 shrink-0 rounded-lg object-cover ring-1 ring-border/80"
+                className="size-14 shrink-0 rounded-lg object-cover ring-1 shadow-neo-inset ring-border/70"
               />
               <div className="min-w-0 flex-1">
                 <p className="truncate text-sm font-medium text-foreground">
@@ -81,14 +81,14 @@ export function PhotoUploader({
                   Click or drop another photo to replace it
                 </p>
               </div>
-              <span className="hidden shrink-0 items-center gap-1.5 rounded-lg border border-border bg-card px-2.5 py-1.5 text-[11px] font-medium text-muted-foreground sm:flex">
+              <span className="hidden shrink-0 items-center gap-1.5 rounded-full border border-border/70 bg-card px-2.5 py-1.5 text-[11px] font-medium text-muted-foreground shadow-neo-pill sm:flex">
                 <RiArrowUpLine className="size-3" />
                 Replace
               </span>
             </div>
           ) : (
             <>
-              <span className="flex size-10 items-center justify-center rounded-xl bg-secondary/70 text-accent-strong ring-1 ring-border/70">
+              <span className="flex size-10 items-center justify-center rounded-xl bg-card text-accent-strong ring-1 shadow-neo-sm ring-border/70">
                 <RiImageAddLine className="size-5" />
               </span>
               <div>

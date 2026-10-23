@@ -117,8 +117,8 @@ export function DpGenerator({
 
   return (
     <section className="mx-auto max-w-6xl px-4 pb-20 sm:px-6">
-      <div className="grid items-start gap-5 lg:grid-cols-2 lg:gap-6">
-        <div className="order-2 flex flex-col gap-5 lg:order-1">
+      <div className="grid items-start gap-6 lg:grid-cols-2 lg:gap-8">
+        <div className="order-2 flex flex-col gap-6 lg:order-1">
           <TemplatePicker
             frames={frames}
             palette={palette}

@@ -52,7 +52,7 @@ export function CaptionForm({
             value={name}
             onChange={(event) => onNameChange(event.target.value)}
             placeholder="Juan Dela Cruz"
-            className="mt-1.5 h-10 w-full rounded-lg border border-input bg-background/60 px-3 text-sm text-foreground transition-colors outline-none placeholder:text-muted-foreground/60 focus:border-accent focus:ring-3 focus:ring-accent/15"
+            className="mt-1.5 h-10 w-full rounded-xl border border-border/70 bg-card px-3 text-sm text-foreground shadow-neo-inset transition-shadow outline-none placeholder:text-muted-foreground/60 focus:border-ring focus:ring-3 focus:ring-ring/25"
           />
         </label>
 
@@ -68,10 +68,10 @@ export function CaptionForm({
                   aria-pressed={isActive}
                   onClick={() => onProgramChange(item.abbr)}
                   className={cn(
-                    "rounded-lg border px-3 py-2 text-left transition-all outline-none focus-visible:ring-3 focus-visible:ring-ring/25",
+                    "rounded-xl border px-3 py-2 text-left transition-all outline-none focus-visible:ring-3 focus-visible:ring-ring/25",
                     isActive
-                      ? "border-primary bg-primary text-primary-foreground shadow-sm"
-                      : "border-border/80 bg-background/50 text-foreground hover:border-accent/35 hover:bg-secondary/30"
+                      ? "border-primary bg-primary text-primary-foreground shadow-neo-pill"
+                      : "border-border/70 bg-card text-foreground shadow-neo-sm hover:-translate-y-px hover:shadow-neo"
                   )}
                 >
                   <span className="block text-[13px] font-semibold">
@@ -97,7 +97,7 @@ export function CaptionForm({
           <span className="text-sm font-medium text-foreground">
             Year level
           </span>
-          <div className="mt-1.5 grid grid-cols-4 gap-1 rounded-xl border border-border/70 bg-secondary/40 p-1">
+          <div className="mt-1.5 grid grid-cols-4 gap-1 rounded-full border border-border/70 bg-card p-1 shadow-neo-inset">
             {years.map((item) => {
               const isActive = item.value === year
               return (
@@ -107,10 +107,10 @@ export function CaptionForm({
                   aria-pressed={isActive}
                   onClick={() => onYearChange(item.value)}
                   className={cn(
-                    "rounded-lg py-1.5 text-sm font-medium transition-all outline-none focus-visible:ring-3 focus-visible:ring-ring/25",
+                    "rounded-full py-1.5 text-sm font-medium transition-all outline-none focus-visible:ring-3 focus-visible:ring-ring/25",
                     isActive
-                      ? "bg-primary text-primary-foreground shadow-sm"
-                      : "text-muted-foreground hover:bg-card/60 hover:text-foreground"
+                      ? "bg-primary text-primary-foreground shadow-neo-pill"
+                      : "text-muted-foreground hover:text-foreground"
                   )}
                 >
                   {item.label}
@@ -120,7 +120,7 @@ export function CaptionForm({
           </div>
         </div>
 
-        <div className="flex flex-col gap-3 rounded-xl border border-border/70 bg-background/55 p-4">
+        <div className="flex flex-col gap-3 rounded-xl border border-border/70 bg-card p-4 shadow-neo-sm">
           <div>
             <div className="flex items-start justify-between gap-3">
               <p className="text-sm font-semibold text-foreground">

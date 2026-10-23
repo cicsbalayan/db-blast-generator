@@ -52,13 +52,13 @@
 
 /*
  * Palette
- * #FEF3E2  cream      canvas + light text on dark
- * #F4AE52  amber      subtle highlights + focus warmth
- * #D4621A  burnt      accent, icons + primary actions
- * #2A1A0E  espresso   body text + dark surfaces
- *
- * Supporting tones are derived from the four swatches so the UI stays
- * cohesive while keeping text contrast comfortably above WCAG AA.
+ * #FEF3E2  cream      background
+ * #FFFBF5  warm white extruded surfaces
+ * #F4AE52  amber      soft highlights
+ * #D4621A  burnt      accent / glow
+ * #B24E0F  rust       primary actions
+ * #2A1A0E  espresso   text
+ * #6B5844  taupe      muted text
  */
 :root {
   --background: #fef3e2;
@@ -76,7 +76,7 @@
   --secondary: #f6e4cb;
   --secondary-foreground: #2a1a0e;
 
-  --muted: #f8ead8;
+  --muted: #f4e3cc;
   --muted-foreground: #6b5844;
 
   --accent: #d4621a;
@@ -86,17 +86,17 @@
   --destructive: #b42318;
   --destructive-foreground: #fff8f6;
 
-  --border: #e8d5bd;
-  --input: #dfc9ad;
+  --border: #e3cfb0;
+  --input: #dcc7a6;
   --ring: #d4621a;
 
-  --radius: 0.75rem;
+  --radius: 0.875rem;
 
   --chart-1: #d4621a;
   --chart-2: #f4ae52;
-  --chart-3: #2a1a0e;
-  --chart-4: #b24e0f;
-  --chart-5: #e8d5bd;
+  --chart-3: #b24e0f;
+  --chart-4: #2a1a0e;
+  --chart-5: #e3cfb0;
 
   --sidebar: #fef3e2;
   --sidebar-foreground: #2a1a0e;
@@ -104,7 +104,7 @@
   --sidebar-primary-foreground: #fef3e2;
   --sidebar-accent: #f6e4cb;
   --sidebar-accent-foreground: #2a1a0e;
-  --sidebar-border: #e8d5bd;
+  --sidebar-border: #e3cfb0;
   --sidebar-ring: #d4621a;
 }
 
@@ -114,6 +114,11 @@
   }
   body {
     @apply bg-background text-foreground antialiased;
+    background-image: radial-gradient(
+      1200px 800px at 50% 0%,
+      #fff7ed 0%,
+      transparent 65%
+    );
   }
   html {
     @apply font-sans;
@@ -121,19 +126,31 @@
     scroll-padding-top: 5rem;
   }
   ::selection {
-    background: var(--secondary);
+    background: color-mix(in srgb, var(--accent) 16%, transparent);
     color: var(--foreground);
   }
 }
 
-@utility shadow-card {
+@utility shadow-neo {
   box-shadow:
-    0 1px 2px rgb(42 26 14 / 0.04),
-    0 12px 32px -20px rgb(42 26 14 / 0.28);
+    16px 16px 32px -18px rgb(42 26 14 / 0.28),
+    -12px -12px 28px -16px rgb(255 255 255 / 0.95);
 }
 
-@utility shadow-float {
+@utility shadow-neo-sm {
   box-shadow:
-    0 2px 4px rgb(42 26 14 / 0.05),
-    0 24px 56px -28px rgb(42 26 14 / 0.4);
+    9px 9px 20px -14px rgb(42 26 14 / 0.24),
+    -7px -7px 16px -12px rgb(255 255 255 / 0.9);
+}
+
+@utility shadow-neo-inset {
+  box-shadow:
+    inset 6px 6px 14px -10px rgb(42 26 14 / 0.2),
+    inset -6px -6px 14px -10px rgb(255 255 255 / 0.9);
+}
+
+@utility shadow-neo-pill {
+  box-shadow:
+    5px 5px 12px -9px rgb(42 26 14 / 0.28),
+    -4px -4px 12px -9px rgb(255 255 255 / 0.95);
 }

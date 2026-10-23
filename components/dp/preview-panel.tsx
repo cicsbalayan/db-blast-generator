@@ -48,16 +48,19 @@ export function PreviewPanel({
             Drag to reposition · pinch or use the controls to zoom
           </CardDescription>
         </div>
-        <span className="mt-0.5 inline-flex shrink-0 items-center gap-1.5 rounded-full border border-border/70 bg-secondary/50 px-2.5 py-1 text-[10px] font-semibold tracking-wide text-secondary-foreground uppercase">
-          <span aria-hidden className="size-1.5 rounded-full bg-accent" />
+        <span className="mt-0.5 inline-flex shrink-0 items-center gap-1.5 rounded-full border border-border/70 bg-card px-2.5 py-1 text-[10px] font-semibold tracking-wide text-secondary-foreground uppercase shadow-neo-pill">
+          <span
+            aria-hidden
+            className="size-1.5 rounded-full bg-accent shadow-[0_0_0_4px_color-mix(in_srgb,var(--accent)_14%,transparent)]"
+          />
           Live
         </span>
       </CardHeader>
       <CardContent>
-        <div className="relative mx-auto aspect-square w-full max-w-md overflow-hidden rounded-xl bg-foreground ring-1 shadow-float ring-foreground/20">
+        <div className="relative mx-auto aspect-square w-full max-w-md overflow-hidden rounded-2xl bg-foreground ring-1 shadow-neo ring-foreground/15">
           <div
             aria-hidden
-            className="pointer-events-none absolute inset-0 bg-linear-to-b from-secondary/10 via-transparent to-foreground/30"
+            className="pointer-events-none absolute inset-0 bg-linear-to-b from-[#fff7ed]/10 via-transparent to-[#1a1008]/40"
           />
           <canvas
             ref={previewRef}
@@ -82,7 +85,7 @@ export function PreviewPanel({
           >
             <RiRefreshLine />
           </Button>
-          <div className="flex items-center gap-1 rounded-lg border border-border/80 bg-background/60 p-1">
+          <div className="flex items-center gap-1 rounded-full border border-border/70 bg-card p-1 shadow-neo-inset">
             <Button
               variant="ghost"
               size="icon-sm"
