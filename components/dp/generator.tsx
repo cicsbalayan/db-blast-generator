@@ -27,13 +27,17 @@ export function DpGenerator({
   const [selectedId, setSelectedId] = React.useState<FrameId>(blast.frames[0])
   const [name, setName] = React.useState("")
   const [year, setYear] = React.useState<Year>("1")
-  const [program, setProgram] = React.useState<string>(blast.programs[0]?.abbr ?? "")
+  const [program, setProgram] = React.useState<string>(
+    blast.programs[0]?.abbr ?? ""
+  )
 
-  const activeFrame = blast.frames.includes(selectedId) ? selectedId : blast.frames[0]
+  const activeFrame = blast.frames.includes(selectedId)
+    ? selectedId
+    : blast.frames[0]
   const programsForYear = blast.programsByYear?.[year] ?? blast.programs
   const activeProgram = programsForYear.some((p) => p.abbr === program)
     ? program
-    : programsForYear[0]?.abbr ?? ""
+    : (programsForYear[0]?.abbr ?? "")
 
   const photo = usePhotoUpload()
   const transform = usePhotoTransform(PREVIEW_SIZE)
@@ -63,10 +67,25 @@ export function DpGenerator({
     loadDrawer(activeFrame)
       .then((drawer) => {
         if (token !== renderToken.current) return
-        drawFrame(ctx, PREVIEW_SIZE, drawer, photo.image, palette, transform.transform, frameImage)
+        drawFrame(
+          ctx,
+          PREVIEW_SIZE,
+          drawer,
+          photo.image,
+          palette,
+          transform.transform,
+          frameImage
+        )
       })
       .catch(() => {})
-  }, [activeFrame, photo.image, palette, transform.transform, transform.previewRef, frameImage])
+  }, [
+    activeFrame,
+    photo.image,
+    palette,
+    transform.transform,
+    transform.previewRef,
+    frameImage,
+  ])
 
   async function handleDownload() {
     if (!photo.image) return
@@ -76,7 +95,15 @@ export function DpGenerator({
     out.height = DOWNLOAD_SIZE
     const ctx = out.getContext("2d")
     if (!ctx) return
-    drawFrame(ctx, DOWNLOAD_SIZE, drawer, photo.image, palette, transform.transform, frameImage)
+    drawFrame(
+      ctx,
+      DOWNLOAD_SIZE,
+      drawer,
+      photo.image,
+      palette,
+      transform.transform,
+      frameImage
+    )
     out.toBlob((blob) => {
       if (!blob) return
       const url = URL.createObjectURL(blob)
@@ -89,9 +116,9 @@ export function DpGenerator({
   }
 
   return (
-    <section className="mx-auto max-w-5xl px-4 pb-16 sm:px-6">
-      <div className="grid items-start gap-4 lg:grid-cols-2">
-        <div className="order-2 flex flex-col gap-4 lg:order-1">
+    <section className="mx-auto max-w-6xl px-4 pb-20 sm:px-6">
+      <div className="grid items-start gap-5 lg:grid-cols-2 lg:gap-6">
+        <div className="order-2 flex flex-col gap-5 lg:order-1">
           <TemplatePicker
             frames={frames}
             palette={palette}
@@ -99,13 +126,11 @@ export function DpGenerator({
             onSelect={setSelectedId}
           />
           <PhotoUploader
-            palette={palette}
             photoUrl={photo.url}
             photoName={photo.name}
             onFile={photo.handleFile}
           />
           <CaptionForm
-            palette={palette}
             programs={programsForYear}
             name={name}
             year={year}
@@ -117,9 +142,8 @@ export function DpGenerator({
           />
         </div>
 
-        <div className="order-1 lg:order-2 lg:sticky lg:top-20">
+        <div className="order-1 lg:sticky lg:top-24 lg:order-2">
           <PreviewPanel
-            palette={palette}
             previewRef={transform.previewRef}
             zoom={transform.zoom}
             hasAdjustments={transform.hasAdjustments}

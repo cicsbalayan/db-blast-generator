@@ -32,7 +32,7 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={cn("dark antialiased", fontMono.variable, raleway.variable)}
+      className={cn("antialiased", fontMono.variable, raleway.variable)}
     >
       <body>{children}</body>
     </html>

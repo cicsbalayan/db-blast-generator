@@ -2,19 +2,16 @@
 
 import * as React from "react"
 
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import type { FramePalette } from "@/lib/dp/types"
-import { linearGradient } from "@/lib/gradient"
+import { Card, CardContent, CardHeader } from "@/components/ui/card"
+import { CardHeading } from "@/components/dp/card-heading"
 import { cn } from "@/lib/utils"
 import { RiArrowUpLine, RiImageAddLine } from "@remixicon/react"
 
 export function PhotoUploader({
-  palette,
   photoUrl,
   photoName,
   onFile,
 }: {
-  palette: FramePalette
   photoUrl: string | null
   photoName: string | null
   onFile: (file: File | undefined | null) => void
@@ -22,15 +19,14 @@ export function PhotoUploader({
   const inputRef = React.useRef<HTMLInputElement>(null)
   const [dragging, setDragging] = React.useState(false)
 
-  const actionStyle = {
-    backgroundImage: linearGradient(palette.gradient),
-    boxShadow: `0 8px 24px -8px ${palette.glow}`,
-  }
-
   return (
     <Card>
-      <CardHeader>
-        <CardTitle>Upload your photo</CardTitle>
+      <CardHeader className="border-b border-border/60 pb-4">
+        <CardHeading
+          step="02"
+          title="Upload your photo"
+          description="A clear, front-facing photo works best."
+        />
       </CardHeader>
       <CardContent>
         <input
@@ -65,32 +61,34 @@ export function PhotoUploader({
             onFile(event.dataTransfer.files?.[0])
           }}
           className={cn(
-            "flex cursor-pointer flex-col items-center justify-center gap-2.5 rounded-2xl border border-dashed border-border/70 px-6 py-6 text-center transition-colors outline-none hover:border-primary-2/60 hover:bg-primary-2/5 focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/30 sm:py-7",
-            dragging && "border-primary-2/70 bg-primary-2/5"
+            "flex cursor-pointer flex-col items-center justify-center gap-2.5 rounded-xl border border-dashed border-border bg-background/40 px-6 py-7 text-center transition-colors outline-none hover:border-accent/45 hover:bg-secondary/25 focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/25",
+            dragging && "border-accent/70 bg-secondary/40"
           )}
         >
           {photoUrl ? (
-            <div className="flex items-center gap-3">
+            <div className="flex w-full items-center gap-3 text-left">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={photoUrl}
                 alt="Selected photo preview"
-                className="size-14 rounded-2xl object-cover ring-1 ring-border/60"
+                className="size-14 shrink-0 rounded-lg object-cover ring-1 ring-border/80"
               />
-              <div className="text-left">
-                <p className="text-sm font-medium text-foreground">{photoName}</p>
-                <p className="mt-0.5 flex items-center gap-1.5 text-xs text-muted-foreground">
-                  <RiArrowUpLine className="size-3.5" />
+              <div className="min-w-0 flex-1">
+                <p className="truncate text-sm font-medium text-foreground">
+                  {photoName}
+                </p>
+                <p className="mt-0.5 text-xs text-muted-foreground">
                   Click or drop another photo to replace it
                 </p>
               </div>
+              <span className="hidden shrink-0 items-center gap-1.5 rounded-lg border border-border bg-card px-2.5 py-1.5 text-[11px] font-medium text-muted-foreground sm:flex">
+                <RiArrowUpLine className="size-3" />
+                Replace
+              </span>
             </div>
           ) : (
             <>
-              <span
-                className="flex size-10 items-center justify-center rounded-2xl text-primary-foreground"
-                style={actionStyle}
-              >
+              <span className="flex size-10 items-center justify-center rounded-xl bg-secondary/70 text-accent-strong ring-1 ring-border/70">
                 <RiImageAddLine className="size-5" />
               </span>
               <div>
@@ -98,7 +96,7 @@ export function PhotoUploader({
                   Drag & drop your photo here
                 </p>
                 <p className="mt-0.5 text-xs text-muted-foreground">
-                  or click to browse your files
+                  or click to browse · JPG, PNG, or WEBP
                 </p>
               </div>
             </>

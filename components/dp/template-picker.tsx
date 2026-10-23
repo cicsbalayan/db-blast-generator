@@ -2,7 +2,8 @@
 
 import * as React from "react"
 
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent, CardHeader } from "@/components/ui/card"
+import { CardHeading } from "@/components/dp/card-heading"
 import { useFrameImage } from "@/hooks/use-frame-image"
 import { THUMB_SIZE } from "@/lib/dp/config"
 import { drawFrame, loadDrawer } from "@/lib/dp/renderer"
@@ -38,7 +39,15 @@ function TemplateThumb({
     loadDrawer(frame.id)
       .then((drawer) => {
         if (token !== renderToken.current) return
-        drawFrame(ctx, THUMB_SIZE, drawer, null, palette, DEFAULT_TRANSFORM, frameImage)
+        drawFrame(
+          ctx,
+          THUMB_SIZE,
+          drawer,
+          null,
+          palette,
+          DEFAULT_TRANSFORM,
+          frameImage
+        )
       })
       .catch(() => {})
   }, [frame.id, palette, frameImage])
@@ -49,17 +58,25 @@ function TemplateThumb({
       aria-pressed={selected}
       onClick={() => onSelect(frame.id)}
       className={cn(
-        "group/tpl flex flex-col items-center gap-1.5 rounded-2xl bg-background p-2 ring-1 ring-border/60 transition-all hover:ring-primary-2/40",
-        selected && "ring-2 ring-primary shadow-[0_0_24px_-8px] shadow-primary/60"
+        "group/tpl flex flex-col gap-2 rounded-xl border border-border/70 bg-background/50 p-1.5 text-left transition-all outline-none hover:border-accent/40 hover:bg-secondary/30 focus-visible:ring-3 focus-visible:ring-ring/25",
+        selected && "border-accent/60 bg-secondary/30 ring-2 ring-accent/15"
       )}
     >
-      <canvas
-        ref={ref}
-        className="aspect-square w-full rounded-2xl bg-[oklch(0.147_0.004_49.25)]"
-      />
-      <span className="flex items-center gap-1 text-[11px] font-medium text-muted-foreground group-hover/tpl:text-foreground">
-        {selected && <RiCheckLine className="size-3 text-primary" />}
-        {frame.name}
+      <span className="relative block overflow-hidden rounded-lg bg-foreground ring-1 ring-border/40">
+        <canvas ref={ref} className="aspect-square w-full" />
+        {selected && (
+          <span className="absolute top-2 right-2 flex size-5 items-center justify-center rounded-full bg-accent text-accent-foreground shadow-sm">
+            <RiCheckLine className="size-3" />
+          </span>
+        )}
+      </span>
+      <span className="flex items-center justify-between gap-2 px-0.5 pb-0.5 text-[11px] font-medium text-muted-foreground group-hover/tpl:text-foreground">
+        <span className="truncate">{frame.name}</span>
+        {selected && (
+          <span className="shrink-0 text-[10px] font-semibold tracking-wide text-accent-strong uppercase">
+            Selected
+          </span>
+        )}
       </span>
     </button>
   )
@@ -78,11 +95,17 @@ export function TemplatePicker({
 }) {
   return (
     <Card>
-      <CardHeader>
-        <CardTitle>Choose a frame</CardTitle>
+      <CardHeader className="border-b border-border/60 pb-4">
+        <CardHeading
+          step="01"
+          title="Choose a frame"
+          description={`${frames.length} official ${
+            frames.length === 1 ? "design" : "designs"
+          } available`}
+        />
       </CardHeader>
       <CardContent>
-        <div className="grid grid-cols-2 gap-2.5">
+        <div className="grid grid-cols-2 gap-3">
           {frames.map((frame) => (
             <TemplateThumb
               key={frame.id}

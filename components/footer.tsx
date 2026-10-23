@@ -1,31 +1,25 @@
 "use client"
 
 import { site } from "@/data/site"
-import { linearGradient } from "@/lib/gradient"
-import type { Blast } from "@/data/blasts"
 
-export function Footer({ blast }: { blast: Blast }) {
+export function Footer() {
   return (
-    <footer className="relative">
-      <div
-        aria-hidden
-        className="absolute inset-x-0 top-0 h-px"
-      />
-      <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6">
-        <p className="text-center text-xs text-muted-foreground">
-          © {new Date().getFullYear()}{" "}
-          <span
-            className="font-medium"
-            style={{
-              backgroundImage: linearGradient(blast.gradient),
-              WebkitBackgroundClip: "text",
-              backgroundClip: "text",
-              color: "transparent",
-            }}
-          >
-            {site.brand.name}
-          </span>
-          . {site.footer.rights}
+    <footer className="border-t border-border/70">
+      <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-4 py-8 text-center sm:flex-row sm:px-6 sm:text-left">
+        <div className="flex items-center gap-2.5">
+          <span aria-hidden className="size-1.5 rounded-full bg-accent" />
+          <p className="text-xs text-muted-foreground">
+            <span className="font-medium text-foreground">
+              {site.brand.name}
+            </span>
+            <span aria-hidden className="px-1.5 text-border">
+              /
+            </span>
+            {site.brand.tagline}
+          </p>
+        </div>
+        <p className="text-xs text-muted-foreground">
+          © {new Date().getFullYear()} {site.brand.name}. {site.footer.rights}
         </p>
       </div>
     </footer>

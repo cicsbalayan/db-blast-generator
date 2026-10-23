@@ -75,7 +75,9 @@ export function frameGradient(
   y1: number
 ) {
   const gradient = ctx.createLinearGradient(x0, y0, x1, y1)
-  colors.forEach((color, i) => gradient.addColorStop(i / (colors.length - 1), color))
+  colors.forEach((color, i) =>
+    gradient.addColorStop(i / (colors.length - 1), color)
+  )
   return gradient
 }
 
@@ -113,12 +115,12 @@ export function drawPlaceholderFace(
   w: number,
   h: number
 ) {
-  ctx.fillStyle = "oklch(0.268 0.007 34.298)"
+  ctx.fillStyle = "#2a1a0e"
   ctx.fillRect(x, y, w, h)
 
   const cx = x + w / 2
   const headRadius = w * 0.16
-  ctx.fillStyle = "oklch(0.42 0.008 49.25)"
+  ctx.fillStyle = "#5a3a22"
   ctx.beginPath()
   ctx.arc(cx, y + h * 0.38, headRadius, 0, Math.PI * 2)
   ctx.fill()

@@ -1,16 +1,14 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent, CardHeader } from "@/components/ui/card"
+import { CardHeading } from "@/components/dp/card-heading"
 import { years, type Program, type Year } from "@/data/blasts"
-import type { FramePalette } from "@/lib/dp/types"
 import type { GeneratedCaption } from "@/lib/domain/caption"
-import { linearGradient } from "@/lib/gradient"
 import { cn } from "@/lib/utils"
 import { RiFileCopyLine } from "@remixicon/react"
 
 export function CaptionForm({
-  palette,
   programs,
   name,
   year,
@@ -20,7 +18,6 @@ export function CaptionForm({
   onYearChange,
   onProgramChange,
 }: {
-  palette: FramePalette
   programs: readonly Program[]
   name: string
   year: Year
@@ -40,23 +37,27 @@ export function CaptionForm({
 
   return (
     <Card>
-      <CardHeader>
-        <CardTitle>Caption</CardTitle>
+      <CardHeader className="border-b border-border/60 pb-4">
+        <CardHeading
+          step="03"
+          title="Add your details"
+          description="We'll build a ready-to-paste caption for your post."
+        />
       </CardHeader>
-      <CardContent className="flex flex-col gap-4">
+      <CardContent className="flex flex-col gap-5">
         <label className="block">
-          <span className="text-sm font-medium">Full name</span>
+          <span className="text-sm font-medium text-foreground">Full name</span>
           <input
             type="text"
             value={name}
             onChange={(event) => onNameChange(event.target.value)}
             placeholder="Juan Dela Cruz"
-            className="mt-1.5 h-9 w-full rounded-xl border border-border/70 bg-background px-3 text-sm text-foreground [color-scheme:dark] outline-none placeholder:text-muted-foreground/60 focus:border-ring focus:ring-3 focus:ring-ring/30"
+            className="mt-1.5 h-10 w-full rounded-lg border border-input bg-background/60 px-3 text-sm text-foreground transition-colors outline-none placeholder:text-muted-foreground/60 focus:border-accent focus:ring-3 focus:ring-accent/15"
           />
         </label>
 
         <div>
-          <span className="text-sm font-medium">Program</span>
+          <span className="text-sm font-medium text-foreground">Program</span>
           <div className="mt-1.5 grid grid-cols-2 gap-2">
             {programs.map((item) => {
               const isActive = item.abbr === program
@@ -67,24 +68,23 @@ export function CaptionForm({
                   aria-pressed={isActive}
                   onClick={() => onProgramChange(item.abbr)}
                   className={cn(
-                    "rounded-xl px-3 py-2 text-left transition-all",
+                    "rounded-lg border px-3 py-2 text-left transition-all outline-none focus-visible:ring-3 focus-visible:ring-ring/25",
                     isActive
-                      ? "text-primary-foreground"
-                      : "bg-background text-muted-foreground ring-1 ring-border/60 hover:text-foreground"
+                      ? "border-primary bg-primary text-primary-foreground shadow-sm"
+                      : "border-border/80 bg-background/50 text-foreground hover:border-accent/35 hover:bg-secondary/30"
                   )}
-                  style={
-                    isActive
-                      ? {
-                          backgroundImage: linearGradient(palette.gradient),
-                          boxShadow: `0 4px 14px -6px ${palette.glow}`,
-                        }
-                      : undefined
-                  }
                 >
                   <span className="block text-[13px] font-semibold">
                     {item.abbr}
                   </span>
-                  <span className="mt-0.5 block text-[11px] opacity-75">
+                  <span
+                    className={cn(
+                      "mt-0.5 block text-[11px] leading-snug",
+                      isActive
+                        ? "text-primary-foreground"
+                        : "text-muted-foreground"
+                    )}
+                  >
                     {item.name}
                   </span>
                 </button>
@@ -94,8 +94,10 @@ export function CaptionForm({
         </div>
 
         <div>
-          <span className="text-sm font-medium">Year level</span>
-          <div className="mt-1.5 grid grid-cols-4 gap-2">
+          <span className="text-sm font-medium text-foreground">
+            Year level
+          </span>
+          <div className="mt-1.5 grid grid-cols-4 gap-1 rounded-xl border border-border/70 bg-secondary/40 p-1">
             {years.map((item) => {
               const isActive = item.value === year
               return (
@@ -105,19 +107,11 @@ export function CaptionForm({
                   aria-pressed={isActive}
                   onClick={() => onYearChange(item.value)}
                   className={cn(
-                    "rounded-full py-1.5 text-sm font-medium transition-all",
+                    "rounded-lg py-1.5 text-sm font-medium transition-all outline-none focus-visible:ring-3 focus-visible:ring-ring/25",
                     isActive
-                      ? "text-primary-foreground"
-                      : "bg-background text-muted-foreground ring-1 ring-border/60 hover:text-foreground"
+                      ? "bg-primary text-primary-foreground shadow-sm"
+                      : "text-muted-foreground hover:bg-card/60 hover:text-foreground"
                   )}
-                  style={
-                    isActive
-                      ? {
-                          backgroundImage: linearGradient(palette.gradient),
-                          boxShadow: `0 4px 14px -6px ${palette.glow}`,
-                        }
-                      : undefined
-                  }
                 >
                   {item.label}
                 </button>
@@ -126,7 +120,7 @@ export function CaptionForm({
           </div>
         </div>
 
-        <div className="flex flex-col gap-3 rounded-2xl bg-background p-3.5 ring-1 ring-border/60">
+        <div className="flex flex-col gap-3 rounded-xl border border-border/70 bg-background/55 p-4">
           <div>
             <div className="flex items-start justify-between gap-3">
               <p className="text-sm font-semibold text-foreground">
@@ -137,12 +131,14 @@ export function CaptionForm({
                 Copy
               </Button>
             </div>
-            <p className="mt-1 text-sm leading-snug text-muted-foreground">
+            <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
               <span dangerouslySetInnerHTML={{ __html: caption.bodyHtml }} />
             </p>
-            <p className="mt-1.5 text-xs text-primary/90">{caption.hashtags}</p>
+            <p className="mt-2 text-xs font-medium text-accent-strong">
+              {caption.hashtags}
+            </p>
           </div>
-          <p className="text-[11px] text-muted-foreground/70">
+          <p className="text-[11px] leading-relaxed text-muted-foreground/80">
             Paste this caption under your DP post on Facebook.
           </p>
         </div>

@@ -6,8 +6,8 @@ export const site = {
       "Put your photo inside a stylish frame and download your new display picture.",
   },
   brand: {
-    name: "ElevatED 3.0: Freshmen Orientation & Old Student Reorientation",
-    tagline: "Dp Blast Generator",
+    name: "DP Blast Generator",
+    tagline: "ElevatED 3.0 · BatStateU Balayan",
   },
   footer: {
     rights: "All rights reserved.",

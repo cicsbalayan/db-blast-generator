@@ -4,21 +4,20 @@ import dynamic from "next/dynamic"
 
 import { Badge } from "@/components/ui/badge"
 import { blasts, type Blast } from "@/data/blasts"
-import { linearGradient, translucent } from "@/lib/gradient"
 import { cn } from "@/lib/utils"
-import { RiSparkling2Line } from "@remixicon/react"
+import { RiCheckboxCircleLine, RiImageLine, RiLockLine } from "@remixicon/react"
 
 const DpGenerator = dynamic(
   () => import("@/components/dp/generator").then((mod) => mod.DpGenerator),
   {
     loading: () => (
-      <div className="mx-auto grid max-w-5xl animate-pulse gap-4 px-4 pb-16 sm:px-6 lg:grid-cols-2">
-        <div className="flex flex-col gap-4">
-          <div className="h-56 rounded-3xl bg-card ring-1 ring-foreground/5" />
-          <div className="h-40 rounded-3xl bg-card ring-1 ring-foreground/5" />
-          <div className="h-80 rounded-3xl bg-card ring-1 ring-foreground/5" />
+      <div className="mx-auto grid max-w-6xl animate-pulse gap-5 px-4 pb-20 sm:px-6 lg:grid-cols-2">
+        <div className="flex flex-col gap-5">
+          <div className="h-56 rounded-2xl border border-border/60 bg-card shadow-card" />
+          <div className="h-40 rounded-2xl border border-border/60 bg-card shadow-card" />
+          <div className="h-80 rounded-2xl border border-border/60 bg-card shadow-card" />
         </div>
-        <div className="h-[28rem] rounded-3xl bg-card ring-1 ring-foreground/5" />
+        <div className="h-[30rem] rounded-2xl border border-border/60 bg-card shadow-card" />
       </div>
     ),
   }
@@ -35,75 +34,71 @@ export function DpApp({
 
   return (
     <div className="relative">
-      <div aria-hidden className="pointer-events-none fixed inset-0 -z-10">
-        <div
-          className="absolute top-1/4 -left-40 h-96 w-96 rounded-full blur-3xl"
-          style={{ background: linearGradient(translucent(active.gradient, "0.16")) }}
-        />
-        <div
-          className="absolute right-0 bottom-1/4 h-80 w-80 rounded-full blur-3xl"
-          style={{ background: linearGradient(translucent(active.gradient, "0.14")) }}
-        />
-        <div
-          className="absolute top-2/3 left-1/3 h-72 w-72 rounded-full blur-3xl"
-          style={{ background: linearGradient(translucent(active.gradient, "0.12")) }}
-        />
+      <div
+        aria-hidden
+        className="pointer-events-none fixed inset-0 -z-10 overflow-hidden"
+      >
+        <div className="absolute -top-48 left-1/2 h-[34rem] w-[52rem] -translate-x-1/2 rounded-full bg-secondary/35 blur-3xl" />
+        <div className="absolute right-[-12rem] bottom-0 h-96 w-96 rounded-full bg-accent/[0.07] blur-3xl" />
       </div>
 
-      <section className="relative">
-        <div className="mx-auto max-w-5xl px-4 pt-14 pb-8 text-center sm:px-6 sm:pt-16">
-          <Badge
-            className="mb-4 h-auto max-w-full gap-1.5 px-3 py-1.5 text-xs whitespace-normal"
-            variant="secondary"
-            style={{
-              backgroundImage: linearGradient(translucent(active.gradient, "0.3")),
-              borderColor: translucent([active.gradient[1]], "0.5").join(""),
-              boxShadow: `0 0 24px -8px ${active.glow}`,
-            }}
-          >
-            <RiSparkling2Line />
-            {active.name}
-          </Badge>
+      <section className="relative border-b border-border/60">
+        <div className="mx-auto max-w-6xl px-4 pt-14 pb-10 sm:px-6 sm:pt-20 sm:pb-12">
+          <div className="mx-auto max-w-3xl text-center">
+            <Badge
+              className="h-auto gap-2 px-3.5 py-1.5 text-xs"
+              variant="secondary"
+            >
+              <span aria-hidden className="size-1.5 rounded-full bg-accent" />
+              {active.department}
+            </Badge>
 
-          <h1
-            className="mx-auto max-w-3xl bg-clip-text font-heading text-4xl leading-[1.15] font-bold tracking-tight text-transparent sm:text-5xl md:text-6xl"
-            style={{ backgroundImage: linearGradient(active.gradient, 110) }}
-          >
-            {active.title}
-          </h1>
+            <h1 className="mt-5 font-heading text-4xl leading-[1.1] font-semibold tracking-tight text-balance text-foreground sm:text-5xl md:text-6xl">
+              {active.title}
+            </h1>
 
-          <p className="mx-auto mt-4 max-w-2xl text-base text-pretty text-muted-foreground sm:text-lg">
-            {active.description}
-          </p>
+            <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-pretty text-muted-foreground sm:text-[17px]">
+              {active.description}
+            </p>
 
-          <div className="mx-auto mt-7 grid w-full max-w-xs grid-cols-3 gap-1 rounded-full border border-border/60 bg-card p-1 shadow-md ring-1 ring-foreground/5 sm:inline-flex sm:w-auto">
-            {blasts.map((blast) => {
-              const isActive = blast.id === activeId
-              return (
-                <button
-                  key={blast.id}
-                  type="button"
-                  aria-pressed={isActive}
-                  onClick={() => onActiveChange(blast.id)}
-                  className={cn(
-                    "rounded-full px-4 py-2 text-sm font-medium transition-all sm:px-5",
-                    isActive
-                      ? "text-primary-foreground"
-                      : "text-muted-foreground hover:text-foreground"
-                  )}
-                  style={
-                    isActive
-                      ? {
-                          backgroundImage: linearGradient(blast.gradient),
-                          boxShadow: `0 4px 16px -6px ${blast.glow}`,
-                        }
-                      : undefined
-                  }
-                >
-                  {blast.label}
-                </button>
-              )
-            })}
+            {blasts.length > 1 && (
+              <div className="mx-auto mt-8 inline-flex w-full max-w-sm items-center gap-1 rounded-xl border border-border/80 bg-card/70 p-1 shadow-card backdrop-blur-sm">
+                {blasts.map((blast) => {
+                  const isActive = blast.id === activeId
+                  return (
+                    <button
+                      key={blast.id}
+                      type="button"
+                      aria-pressed={isActive}
+                      onClick={() => onActiveChange(blast.id)}
+                      className={cn(
+                        "flex-1 rounded-lg px-4 py-2 text-sm font-medium transition-all outline-none focus-visible:ring-3 focus-visible:ring-ring/25",
+                        isActive
+                          ? "bg-primary text-primary-foreground shadow-sm"
+                          : "text-muted-foreground hover:bg-secondary/50 hover:text-foreground"
+                      )}
+                    >
+                      {blast.label}
+                    </button>
+                  )
+                })}
+              </div>
+            )}
+
+            <div className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2.5 text-xs text-muted-foreground">
+              <span className="inline-flex items-center gap-1.5">
+                <RiCheckboxCircleLine className="size-3.5 text-accent-strong" />
+                Official {active.label} frame
+              </span>
+              <span className="inline-flex items-center gap-1.5">
+                <RiImageLine className="size-3.5 text-accent-strong" />
+                2048 × 2048 PNG
+              </span>
+              <span className="inline-flex items-center gap-1.5">
+                <RiLockLine className="size-3.5 text-accent-strong" />
+                Stays on your device
+              </span>
+            </div>
           </div>
         </div>
       </section>
