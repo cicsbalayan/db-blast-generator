@@ -70,7 +70,7 @@ export function CaptionForm({
                   className={cn(
                     "rounded-xl border px-3 py-2 text-left transition-transform duration-200 ease-out outline-none focus-visible:ring-3 focus-visible:ring-ring/25",
                     isActive
-                      ? "border-[#8b3808]/40 bg-primary surface-primary text-primary-foreground shadow-primary-pill"
+                      ? "border-border bg-linear-to-br from-background via-card to-background text-foreground shadow-md"
                       : "border-border/60 bg-card surface-raised text-foreground shadow-neo-sm hover:-translate-y-px"
                   )}
                 >
@@ -109,7 +109,7 @@ export function CaptionForm({
                   className={cn(
                     "rounded-full py-1.5 text-sm font-medium transition-[transform,background-color,border-color,color] duration-200 outline-none focus-visible:ring-3 focus-visible:ring-ring/25",
                     isActive
-                      ? "bg-primary surface-primary text-primary-foreground shadow-primary-pill"
+                      ? "bg-linear-to-br from-background via-card to-background text-foreground shadow-md"
                       : "text-muted-foreground hover:text-foreground"
                   )}
                 >

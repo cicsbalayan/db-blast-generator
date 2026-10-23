@@ -40,8 +40,12 @@ export const blasts: Blast[] = [
     title: "Mental Health Awareness Month",
     description:
       "The Supreme Student Council, in partnership with the Office of Guidance and Counseling, stands with you for Mental Health Awareness Month.",
-    gradient: ["#F4AE52", "#D4621A", "#B24E0F"],
-    glow: "rgb(212 98 26 / 0.35)",
+    gradient: [
+      "oklch(0.424 0.199 265.638)",
+      "oklch(0.62 0.22 285)",
+      "oklch(0.75 0.15 225)",
+    ],
+    glow: "oklch(0.62 0.22 285 / 0.45)",
     frames: ["ssc"],
     department: "Supreme Student Council",
     campus: "Batangas State University – TNEU Balayan Campus",

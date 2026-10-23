@@ -132,7 +132,7 @@ export function PreviewPanel({
             size="lg"
             onClick={onDownload}
             disabled={!canDownload}
-            className="w-full sm:w-auto"
+            className="w-full bg-linear-to-br from-background via-card to-background text-foreground shadow-[0_8px_24px_-8px] shadow-primary/60 sm:w-auto"
           >
             <RiDownload2Line data-icon="inline-start" />
             Download DP

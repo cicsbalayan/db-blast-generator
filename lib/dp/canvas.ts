@@ -115,12 +115,12 @@ export function drawPlaceholderFace(
   w: number,
   h: number
 ) {
-  ctx.fillStyle = "#2a1a0e"
+  ctx.fillStyle = "oklch(0.147 0.004 49.25)"
   ctx.fillRect(x, y, w, h)
 
   const cx = x + w / 2
   const headRadius = w * 0.16
-  ctx.fillStyle = "#5a3a22"
+  ctx.fillStyle = "white"
   ctx.beginPath()
   ctx.arc(cx, y + h * 0.38, headRadius, 0, Math.PI * 2)
   ctx.fill()

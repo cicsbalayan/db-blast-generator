@@ -4,7 +4,7 @@ import { site } from "@/data/site"
 
 export function SiteHeader() {
   return (
-    <header className="sticky top-0 z-50 border-b border-border/60 bg-background shadow-[0_14px_28px_-26px_rgb(42_26_14/0.55)]">
+    <header className="sticky top-0 z-50 w-full border-b border-border/60 bg-background/80 backdrop-blur-xl after:pointer-events-none after:absolute after:inset-x-0 after:bottom-0 after:h-px after:bg-linear-to-r after:from-transparent after:via-primary-2/60 after:to-transparent">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-4 sm:px-6">
         <a
           href="#"
@@ -31,10 +31,6 @@ export function SiteHeader() {
           </span>
         </div>
       </div>
-      <div
-        aria-hidden
-        className="absolute inset-x-0 bottom-0 h-px bg-linear-to-r from-transparent via-accent/25 to-transparent"
-      />
     </header>
   )
 }

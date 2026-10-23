@@ -58,14 +58,14 @@ function TemplateThumb({
       aria-pressed={selected}
       onClick={() => onSelect(frame.id)}
       className={cn(
-        "surface-raised group/tpl flex flex-col gap-2 rounded-2xl border border-border/70 bg-card p-2 text-left transition-transform duration-200 ease-out outline-none hover:-translate-y-0.5 focus-visible:ring-3 focus-visible:ring-ring/25",
-        selected && "border-primary/60 shadow-neo ring-2 ring-primary/15"
+        "surface-raised group/tpl flex flex-col gap-2 rounded-2xl border border-border/70 bg-card p-2 text-left transition-transform duration-200 ease-out outline-none hover:-translate-y-0.5 focus-visible:ring-3 focus-visible:ring-white/25",
+        selected && "border-white/60 shadow-neo ring-2 ring-white/15"
       )}
     >
-      <span className="relative block overflow-hidden rounded-xl bg-background shadow-neo-inset ring-1 ring-border/70">
+      <span className="relative block overflow-hidden rounded-xl bg-background shadow-neo-inset ring-1 ring-white/20">
         <canvas ref={ref} className="aspect-square w-full" />
         {selected && (
-          <span className="surface-primary absolute top-2 right-2 flex size-5 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-primary-pill">
+          <span className="absolute top-2 right-2 flex size-5 items-center justify-center bg-linear-to-br from-background via-card to-background text-foreground shadow-md">
             <RiCheckLine className="size-3" />
           </span>
         )}
@@ -73,7 +73,7 @@ function TemplateThumb({
       <span className="flex items-center justify-between gap-2 px-1 pb-1 text-[11px] font-medium text-muted-foreground group-hover/tpl:text-foreground">
         <span className="truncate">{frame.name}</span>
         {selected && (
-          <span className="shrink-0 text-[10px] font-semibold tracking-wide text-accent-strong uppercase">
+          <span className="shrink-0 text-[10px] font-semibold tracking-wide text-white uppercase">
             Selected
           </span>
         )}

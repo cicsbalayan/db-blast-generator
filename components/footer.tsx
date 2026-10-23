@@ -4,7 +4,11 @@ import { site } from "@/data/site"
 
 export function Footer() {
   return (
-    <footer className="border-t border-border/60">
+    <footer className="relative">
+      <div
+        aria-hidden
+        className="absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-primary-2/60 to-transparent"
+      />
       <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-4 py-8 text-center sm:flex-row sm:px-6 sm:text-left">
         <div className="flex items-center gap-2.5 rounded-full border border-border/60 bg-card surface-raised px-3 py-1.5 shadow-neo-pill">
           <span aria-hidden className="size-1.5 rounded-full bg-accent" />

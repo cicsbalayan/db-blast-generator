@@ -34,7 +34,7 @@ export function DpApp({
 
   return (
     <div className="relative">
-      <section className="relative border-b border-border/60">
+      <section className="relative overflow-hidden border-b border-border/60 bg-linear-to-b from-primary/10 via-transparent to-transparent">
         <div className="mx-auto max-w-6xl px-4 pt-14 pb-10 sm:px-6 sm:pt-20 sm:pb-12">
           <div className="mx-auto max-w-3xl text-center">
             <Badge
@@ -43,7 +43,7 @@ export function DpApp({
             >
               <span
                 aria-hidden
-                className="size-1.5 rounded-full bg-accent shadow-[0_0_0_4px_color-mix(in_srgb,var(--accent)_14%,transparent)]"
+                className="size-1.5 rounded-full bg-white shadow-[0_0_0_4px_color-mix(in_oklch,var(--primary-2)_24%,transparent)]"
               />
               {active.department}
             </Badge>
@@ -69,7 +69,7 @@ export function DpApp({
                       className={cn(
                         "flex-1 rounded-full px-4 py-2 text-sm font-medium transition-[transform,background-color,border-color,color] duration-200 outline-none focus-visible:ring-3 focus-visible:ring-ring/25",
                         isActive
-                          ? "bg-primary surface-primary text-primary-foreground shadow-primary-pill"
+                          ? "bg-linear-to-br from-background via-card to-background text-foreground shadow-md"
                           : "text-muted-foreground hover:text-foreground"
                       )}
                     >
